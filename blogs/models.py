@@ -9,5 +9,20 @@ class Blog(models.Model):
     content_text = models.TextField()
     user_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
+class Comment(models.Model):
+    comment_text = models.TextField()
+    user_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    parent_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True)
+    blog_id = models.ForeignKey('Blog', on_delete=models.CASCADE)
 
+class BlogLike(models.Model):
+    user_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    blog_id = models.ForeignKey('Blog', on_delete=models.CASCADE)
+
+class CommentLike(models.Model):
+    user_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    comment_id = models.ForeignKey('Comment', on_delete=models.CASCADE)
+
+
+        
 
