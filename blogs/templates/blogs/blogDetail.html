@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>{{ object.header }}</p>
+    {% for comment in comments %}
+        <p>{{ comment.comment_text }}</p>
+    {% endfor %}
+<p>asdddd</p>
+
+{% endblock %}
