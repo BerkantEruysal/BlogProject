@@ -3,14 +3,18 @@
     {% if user.is_authenticated %}
     <p>Hi {{ user.username }}</p>
         <p><a href="{% url 'logout' %}">Log out</a></p>
-        <p><a href="{% url 'createBlog' %}">Create a Blog</a></p>
+        <p><a href="{% url 'create_blog' %}">Create a Blog</a></p>
      {% else %}
         <p>You are not logged in.<a href="{% url 'login' %}">Log in</a> or <a href="{% url 'signup' %}">Sign Up</a></p>
 
     {% endif %}
     <p>ajsldhakjsdkasjkjkj</p>
     {% for object in blog_list %}
-        <p>{{ object.header }} {{ object.id }}</p>
+        <div>
+             <a href={% url 'edit_blog' object.id %}>{{ object.header }} {{ object.id }}</a>
+        </div>
+
+
     {% endfor %}
 
 {% endblock %}
